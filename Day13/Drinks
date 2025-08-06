@@ -1,0 +1,20 @@
+#include <iostream>
+#include <vector>
+#include <iomanip> // Required for setprecision
+using namespace std;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int n;
+    cin >> n;
+    double sum_of_fractions = 0.0;
+    for (int i = 0; i < n; ++i) {
+        int p;
+        std::cin >> p;
+        sum_of_fractions += p;
+    }
+    double result = sum_of_fractions / n;
+    cout << fixed << setprecision(12) << result << endl;
+
+    return 0;
+}
