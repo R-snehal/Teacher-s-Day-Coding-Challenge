@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n, m, o, p;
+    cin>>n>>m>>o>>p;
+    int min_cost;
+    int single = n*o;
+    int num = n/m;
+    int remaining = n%m;
+    int cost1 = num*p + remaining*o;
+    int cost2 = (num + 1)* p;
+    int cost3 = min(cost1,cost2);
+    min_cost = min(single,cost3);
+    cout<<min_cost<<endl;
+    return 0;
+}
