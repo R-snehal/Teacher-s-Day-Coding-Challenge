@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> cards(n);
+    for(int i = 0; i<n;i++){
+        cin>>cards[i];
+    }
+    long long sereja = 0;
+    long long dima = 0;
+    int left = 0;
+    int right = n-1;
+    int turn = 0;
+    while(left <= right){
+        int value;
+        if(cards[left]>cards[right]){
+            value = cards[left];
+            left++;
+        }
+        else{
+            value = cards[right];
+            right--;
+        }
+        if (turn%2==0){
+            sereja += value;
+        }
+        else{
+            dima += value;
+        }
+        turn++;
+    }
+    cout<< sereja << " " << dima <<" ";
+    return 0;
+}
