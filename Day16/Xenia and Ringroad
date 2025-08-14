@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    long long n, m;
+    cin>>n>>m;
+    vector<long long> tasks(m);
+    for(long long i =0; i<m;i++){
+        cin>>tasks[i];
+    }
+    long long time = 0;
+    long long current = 1;
+    for(long long t:tasks){
+        if(t>=current){
+            time+=t-current;
+        }
+        else{
+            time+=n-(current-t);
+        }
+        current =t;
+    }
+    cout<<time<<endl;
+    return 0;
+}
