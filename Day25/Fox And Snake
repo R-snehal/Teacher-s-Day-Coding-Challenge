@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n, m;
+    cin >> n >> m;
+    bool right_facing_snake = true;
+    for (int i = 1; i <= n; ++i) {
+        if (i % 2 != 0) {
+            for (int j = 0; j < m; ++j) {
+                cout << '#';
+            }
+            cout << endl;
+        } else {
+            if (right_facing_snake) {
+                for (int j = 0; j < m - 1; ++j) {
+                    cout << '.';
+                }
+                cout << '#';
+                cout << endl;
+                right_facing_snake = false;
+            } else {
+                cout << '#';
+                for (int j = 0; j < m - 1; ++j) {
+                    cout << '.';
+                }
+                cout << endl;
+                right_facing_snake = true;
+            }
+        }
+    }
+    return 0;
+}
