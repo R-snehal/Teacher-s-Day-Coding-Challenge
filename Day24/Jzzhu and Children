@@ -1,0 +1,20 @@
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n, m;
+    cin >> n >> m;
+    int max_rounds = 0;
+    int last_child_index = 0;
+    for (int i = 1; i <= n; ++i) {
+        int a;
+        cin >> a;
+        int rounds_needed = (a + m - 1) / m;
+        if (rounds_needed >= max_rounds) {
+            max_rounds = rounds_needed;
+            last_child_index = i;
+        }
+    }
+    cout << last_child_index << endl;
+    return 0;
+}
