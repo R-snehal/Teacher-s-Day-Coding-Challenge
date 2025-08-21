@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    vector<int> heights(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> heights[i];
+    }
+    if (n == 0) {
+        cout << 0 << endl;
+        return 0;
+    }
+    int max_watered_count = 0;
+    for (int i = 0; i < n; ++i) {
+        int current_watered_count = 1;
+        for (int j = i + 1; j < n; ++j) {
+            if (heights[j] <= heights[j - 1]) {
+                current_watered_count++;
+            } else {
+                break;
+            }
+        }
+        for (int j = i - 1; j >= 0; --j) {
+            if (heights[j] <= heights[j + 1]) {
+                current_watered_count++;
+            } else {
+                break;
+            }
+        }
+        max_watered_count = max(max_watered_count, current_watered_count);
+    }
+    cout << max_watered_count << endl;
+    return 0;
+}
