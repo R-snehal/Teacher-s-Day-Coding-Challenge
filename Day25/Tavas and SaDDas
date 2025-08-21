@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    string n_str;
+    cin >> n_str;
+    int len = n_str.length();
+    long long count_less_digits = 0;
+    for (int i = 1; i < len; ++i) {
+        count_less_digits += (1LL << i); 
+    }
+    long long same_digit_group_index_0_based = 0;
+    for (int i = 0; i < len; ++i) {
+        if (n_str[i] == '7') {
+            same_digit_group_index_0_based += (1LL << (len - 1 - i));
+        }
+    }
+    long long same_digit_group_index_1_based = same_digit_group_index_0_based + 1;
+    long long final_index = count_less_digits + same_digit_group_index_1_based;
+    cout << final_index << endl;
+    return 0;
+}
