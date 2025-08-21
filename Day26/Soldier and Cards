@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int k1;
+    cin >> k1;
+    queue<int> q1;
+    for (int i = 0; i < k1; ++i) {
+        int card;
+        cin >> card;
+        q1.push(card);
+    }
+    int k2;
+    cin >> k2;
+    queue<int> q2;
+    for (int i = 0; i < k2; ++i) {
+        int card;
+        cin >> card;
+        q2.push(card);
+    }
+    int fights = 0;
+    set<pair<vector<int>, vector<int>>> history;
+    while (!q1.empty() && !q2.empty()) {
+        fights++;
+        vector<int> v1;
+        queue<int> temp_q1 = q1; 
+        while (!temp_q1.empty()) {
+            v1.push_back(temp_q1.front());
+            temp_q1.pop();
+        }
+ 
+        vector<int> v2;
+        queue<int> temp_q2 = q2; 
+        while (!temp_q2.empty()) {
+            v2.push_back(temp_q2.front());
+            temp_q2.pop();
+        }
+        pair<vector<int>, vector<int>> current_state = {v1, v2};
+        if (history.count(current_state)) {
+            cout << -1 << std::endl;
+            return 0;
+        }
+        history.insert(current_state);
+        int card1 = q1.front();
+        q1.pop();
+        int card2 = q2.front();
+        q2.pop();
+        if (card1 > card2) {
+            q1.push(card2);
+            q1.push(card1);
+        } else {
+            q2.push(card1);
+            q2.push(card2);
+        }
+    }
+    if (q1.empty()) {
+        cout << fights << " " << 2 << endl;
+    } else {
+        cout << fights << " " << 1 << endl;
+    }
+ 
+    return 0;
+}
