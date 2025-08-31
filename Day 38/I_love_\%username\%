@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+    if (n <= 1) {
+        int score;
+        cin >> score;
+        cout << 0 << endl;
+        return 0;
+    }
+ 
+    int first_score;
+    cin >> first_score;
+    int max_points = first_score;
+    int min_points = first_score;
+    int amazing_performances = 0;
+    for (int i = 1; i < n; ++i) {
+        int current_score;
+        cin >> current_score;
+        if (current_score > max_points) {
+            amazing_performances++;
+            max_points = current_score;
+        } 
+        else if (current_score < min_points) {
+            amazing_performances++;
+            min_points = current_score;
+        }
+    }
+    cout << amazing_performances << endl;
+ 
+    return 0;
+}
