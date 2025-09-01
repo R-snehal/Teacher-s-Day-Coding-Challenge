@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    int max_h = 0;
+    int min_h = INT_MAX;
+ 
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        if (a[i] > max_h) {
+            max_h = a[i];
+        }
+        if (a[i] < min_h) {
+            min_h = a[i];
+        }
+    }
+ 
+    int max_index = -1;
+    for (int i = 0; i < n; ++i) {
+        if (a[i] == max_h) {
+            max_index = i;
+            break;
+        }
+    }
+ 
+    int min_index = -1;
+    for (int i = n - 1; i >= 0; --i) {
+        if (a[i] == min_h) {
+            min_index = i;
+            break;
+        }
+    }
+ 
+    int total_swaps = 0;
+    total_swaps += max_index;
+    total_swaps += (n - 1) - min_index;
+ 
+    if (max_index > min_index) {
+        total_swaps--;
+    }
+ 
+    cout << total_swaps << endl;
+ 
+    return 0;
+}
