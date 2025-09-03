@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int numberOfPairs(vector<vector<int>>& points) {
+        int n = points.size();
+        sort(points.begin(), points.end(), [](const vector<int>& a, const vector<int>& b) {
+            if (a[0] != b[0]) {
+                return a[0] < b[0];
+            }
+            return a[1] > b[1];
+        });
+
+        int valid_pairs_count = 0;
+        for (int i = 0; i < n; ++i) {
+            int max_y_in_between = -1e9 - 7;
+            for (int j = i + 1; j < n; ++j) {
+                if (points[i][1] >= points[j][1]) {
+                    if (points[j][1] > max_y_in_between) {
+                        valid_pairs_count++;
+                    }
+                    max_y_in_between = max(max_y_in_between, points[j][1]);
+                }
+            }
+        }
+
+        return valid_pairs_count;
+    }
+};
